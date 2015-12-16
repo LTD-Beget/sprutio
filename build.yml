@@ -1,0 +1,67 @@
+python:
+  build: .
+  command: /bin/true
+
+bower:
+  build: .
+  dockerfile: Dockerfile.bower
+  volumes:
+    - "./app/public:/app:rw"
+  command: bower install --allow-root
+  working_dir: /app
+  volumes_from: python
+
+cron:
+  build: .
+  dockerfile: Dockerfile.cron
+  volumes:
+    - "./cron.d:/etc/cron.d:ro"
+    - "./downloads:/tmp/fm:rw"
+  environment:
+    - "S6_BEHAVIOUR_IF_STAGE2_FAILS=2"
+  volumes_from: python
+
+app:
+  build: app
+  links:
+    - redis
+    - rpc
+  volumes:
+    - "./app:/app:ro"
+    - "./logs:/var/log/fm:rw"
+  environment:
+    - "S6_BEHAVIOUR_IF_STAGE2_FAILS=2"
+  working_dir: /app
+  env_file:
+    - "./app.env"
+
+rpc:
+  build: rpc
+  links:
+    - redis
+  volumes:
+    - "./rpc:/rpc:ro"
+    - "./var:/var/spool/fm:rw"
+    - "./logs:/var/log/fm:rw"
+    - "./downloads:/tmp/fm:rw"
+    - "/:/mnt:rw"
+  environment:
+    - "S6_BEHAVIOUR_IF_STAGE2_FAILS=2"
+  working_dir: /rpc
+  env_file:
+    - "./rpc.env"
+
+nginx:
+  image: nginx
+  links:
+    - app
+  volumes:
+    - "./nginx.conf:/etc/nginx/nginx.conf:ro"
+    - "./app/public:/var/www:ro"
+    - "./downloads:/tmp/fm:rw"
+  ports:
+    - "9080:80"
+    - "9443:443"
+
+redis:
+  image: redis

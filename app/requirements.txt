@@ -1,0 +1,13 @@
+# for server and handlers
+git+https://github.com/LTD-Beget/tornado
+git+https://github.com/LTD-Beget/beget_msgpack_py3
+u-msgpack-python
+msgpack-python
+suds-jurko
+certifi
+
+# for auth and sessions
+redis
+
+# for file transfer
+pysendfile

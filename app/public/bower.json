@@ -1,0 +1,27 @@
+{
+  "name": "fm-core",
+  "version": "0.0.1",
+  "authors": [
+    "Sergey Goppikov <grey2k@gmail.com>"
+  ],
+  "description": "FM Open Source",
+  "keywords": [
+    "fm"
+  ],
+  "dependencies": {
+    "ace-builds": "1.2.0",
+    "backbone": "1.2.*",
+    "bootstrap": "3.3.*",
+    "font-awesome": "Font-Awesome#4.4.0",
+    "jquery": "jquery#1.11.3",
+    "jquery.i18n": "1.0.*"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="{{language}}">
+<head>
+    <meta charset="UTF-8">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/static/apple-touch-icon-precomposed.png">
+    <!-- For the iPad mini and the first- and second-generation iPad on iOS ? 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/apple-touch-icon-72x72-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display running iOS ? 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/apple-touch-icon-114x114-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display running iOS ? 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/static/apple-touch-icon-120x120-precomposed.png">
+    <!-- For iPad with high-resolution Retina display running iOS ? 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPad with high-resolution Retina display running iOS ? 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/static/apple-touch-icon-152x152-precomposed.png">
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,800,700&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+
+    <script src="/static/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/static/lib/underscore/underscore-min.js"></script>
+    <script src="/static/lib/backbone/backbone-min.js"></script>
+    <script src="/static/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="/static/lib/jquery.i18n/src/jquery.i18n.js"></script>
+    <script src="/static/lib/jquery.i18n/src/jquery.i18n.messagestore.js"></script>
+    <script src="/static/lib/jquery.i18n/src/jquery.i18n.fallbacks.js"></script>
+    <script src="/static/lib/jquery.i18n/src/jquery.i18n.parser.js"></script>
+    <script src="/static/lib/jquery.i18n/src/jquery.i18n.emitter.js"></script>
+    <script src="/static/lib/jquery.i18n/src/jquery.i18n.language.js"></script>
+    <script src="/static/lib/jquery.i18n/src/languages/ru.js"></script>
+
+    <script src="/static/js/bb.js"></script>
+    <script src="/static/js/views/login.js"></script>
+
+    <script src="/static/js/main.js"></script>
+    <title>BFManager</title>
+</head>
+<body>
+<div class="jumbotron vertical-center">
+    <div id="login-container" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <form id="login-form" class="form form-horizontal">
+                        <input type="hidden" id="input-language" name="language" value="{{language}}">
+                        <div class="form-group">
+                            <h2 class="text-center">BFManager</h2>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-login" class="control-label">{{ _('Login') }}:</label>
+                            <input type="text" id="input-login" class="form-control" name="login" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-password" class="control-label">{{ _('Password') }}:</label>
+                            <input type="password" id="input-password" class="form-control" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <button id="login-submit" class="btn btn-lg btn-primary btn-block" type="submit">{{ _('Sign In') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="copy" class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="text-center"><a href="http://beget.ru">beget.ru</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

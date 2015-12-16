@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>File Manager - Beget</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/fm/ext/src/ux/container/ButtonSegment.css">
+    <link rel="stylesheet" href="/fm/ext/src/ux/upload/css/upload.css">
+
+    <link rel="icon" href="/favicon@2x.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon@2x.ico" type="image/x-icon">
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/static/apple-touch-icon-precomposed.png">
+
+    <!-- For the iPad mini and the first- and second-generation iPad on iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/apple-touch-icon-72x72-precomposed.png">
+
+    <!-- For the iPad mini and the first- and second-generation iPad on iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/static/apple-touch-icon-76x76-precomposed.png">
+
+    <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/apple-touch-icon-114x114-precomposed.png">
+
+    <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/static/apple-touch-icon-120x120-precomposed.png">
+
+    <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/static/apple-touch-icon-152x152-precomposed.png">
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/underscore/underscore-min.js"></script>
+    <script src="/lib/jquery.i18n/src/jquery.i18n.js"></script>
+    <script src="/lib/jquery.i18n/src/jquery.i18n.messagestore.js"></script>
+    <script src="/lib/jquery.i18n/src/jquery.i18n.fallbacks.js"></script>
+    <script src="/lib/jquery.i18n/src/jquery.i18n.parser.js"></script>
+    <script src="/lib/jquery.i18n/src/jquery.i18n.emitter.js"></script>
+    <script src="/lib/jquery.i18n/src/jquery.i18n.language.js"></script>
+    <script src="/lib/jquery.i18n/src/languages/ru.js"></script>
+    <script src="/lib/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="/lib/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+    <script src="/lib/ace-builds/src-min-noconflict/ext-emmet.js"></script>
+
+    <script>
+        $.i18n({
+            locale: '{{ language }}' //Locale is Current language
+        });
+
+        /**
+         *
+         * @returns {*|string|$.i18n}
+         */
+        function t() {
+            return $.i18n.apply($.i18n, arguments);
+        }
+
+        $(document).ready(function () {
+            $.ajax('/fm/i18n/{{ language }}.json', {
+                dataType: 'json',
+                success: function (data) {
+                    $.i18n().load({
+                        '{{ language }}': data
+                    });
+
+                    var body = $('body');
+
+                    $('<script type="text/javascript" src="/fm/loader.js"><\/script>').appendTo(body);
+
+//                    $('<div id="applet_right_embed">' +
+//                        '<applet jnlp_href="/fm/resources/applet.jnlp" archive="/static/app/begetfm.jar" code="begetfm.begetfm" id="applet_right">' +
+//                            '<param name="name" value="BeGet File Manager" />' +
+//                            '<param name="mayscript" value="true" />' +
+//                            '<param name="permissions" value="all-permissions" />' +
+//                        '</applet>' +
+//                      '</div>').appendTo(body);
+//
+//                    $('<div id="applet_left_embed">' +
+//                        '<applet jnlp_href="/fm/resources/applet.jnlp" archive="/static/app/begetfm.jar" code="begetfm.begetfm" id="applet_left">' +
+//                            '<param name="name" value="BeGet File Manager" />' +
+//                            '<param name="mayscript" value="true" />' +
+//                            '<param name="permissions" value="all-permissions" />' +
+//                        '</applet>' +
+//                      '</div>').appendTo(body);
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+<body style="background: url('/fm/resources/images/fm_load.png') center 250px no-repeat" data-debug="0">
+
+</body>
+</html>

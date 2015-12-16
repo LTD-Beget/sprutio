@@ -1,0 +1,6 @@
+[submodule "app/public/fm"]
+	path = app/public/fm
+	url = git://github.com/LTD-Beget/bfm-core-js-frontend.git
+[submodule "rpc"]
+	path = rpc
+	url = git://github.com/LTD-Beget/bfm-core-rpc.git
