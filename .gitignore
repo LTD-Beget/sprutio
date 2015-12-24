@@ -114,3 +114,7 @@ rpc/fm.db
 
 # ignore docker-compose binary
 docker-compose
+docker-compose-*
+
+# ignore ssl certificates
+ssl/

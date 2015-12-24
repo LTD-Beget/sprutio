@@ -1,0 +1,36 @@
+app:
+  build: app
+  volumes_from: []
+  volumes:
+    - "./app:/app:rw"
+
+rpc:
+  build: rpc
+  volumes:
+    - "./rpc:/rpc:ro"
+
+nginx:
+  volumes_from:
+    - cron
+  volumes:
+    - "./nginx.conf:/etc/nginx/nginx.conf:ro"
+    - "./app/public:/app/public:ro"
+
+cron:
+  build: .
+  dockerfile: Dockerfile.cron
+  volumes:
+    - "./cron.d:/etc/cron.d:ro"
+
+redis:
+  image: redis
+
+bower:
+  build: .
+  dockerfile: Dockerfile.bower
+  volumes:
+    - "./app/public:/app:rw"
+  command: bower install --allow-root
+  working_dir: /app
+
+# EOF
