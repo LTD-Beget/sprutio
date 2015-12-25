@@ -3,3 +3,8 @@ app
 rpc
 vendor
 docker-compose
+docker-compose-*
+downloads
+logs
+var
+ssl

@@ -1,29 +1,48 @@
-.PHONY: python cron bower rpc app nginx
+.PHONY: all build push \
+				build-python build-cron build-bower build-rpc build-app build-nginx build-frontend \
+				push-python push-cron push-bower push-rpc push-app push-nginx push-frontend
 
-all: python cron bower rpc app nginx
+all: build
+	
+build: build-python build-cron build-bower build-rpc build-app build-nginx build-frontend
 
-python:
-	docker build -t beget/fmcore-python -f Dockerfile ./
-	docker push beget/fmcore-python
+build-python:
+	docker build -t beget/sprutio-python -f Dockerfile ./
 
-cron:
-	docker build -t beget/fmcore-cron -f Dockerfile.cron ./
-	docker push beget/fmcore-cron
+build-cron:
+	docker build -t beget/sprutio-cron -f Dockerfile.cron ./
 
-bower:
-	docker build -t beget/fmcore-bower -f Dockerfile.bower ./
-	docker push beget/fmcore-bower
+build-bower:
+	docker build -t beget/sprutio-bower -f Dockerfile.bower ./
 
-rpc:
-	docker build -t beget/fmcore-rpc -f rpc/Dockerfile rpc/
-	docker push beget/fmcore-rpc
+build-rpc:
+	docker build -t beget/sprutio-rpc -f rpc/Dockerfile rpc/
 
-app:
-	docker run -v $(PWD)/app/public:/app -w /app beget/fmcore-bower bower install --allow-root
-	docker build -t beget/fmcore-app -f app/Dockerfile app/
-	docker push beget/fmcore-app
+build-app:
+	docker build -t beget/sprutio-app -f app/Dockerfile app/
 
-nginx:
-	docker build -t beget/fmcore-nginx -f Dockerfile.nginx ./
-	docker push beget/fmcore-nginx
+build-nginx:
+	docker build -t beget/sprutio-nginx -f Dockerfile.nginx ./
 
+build-frontend:
+	docker run -v $(PWD)/app/public:/app -w /app beget/sprutio-bower bower install --allow-root
+	docker build -t beget/sprutio-frontend -f app/public/Dockerfile app/public/
+
+push: push-cron push-rpc push-app push-nginx push-frontend
+
+push-cron:
+	docker push beget/sprutio-cron
+
+push-rpc:
+	docker push beget/sprutio-rpc
+
+push-app:
+	docker push beget/sprutio-app
+
+push-nginx:
+	docker push beget/sprutio-nginx
+
+push-frontend:
+	docker push beget/sprutio-frontend
+
+# EOF

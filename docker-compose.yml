@@ -1,60 +1,52 @@
+app:
+  image: beget/sprutio-app
+  links:
+    - redis:fm-redis
+    - rpc:fm-rpc
+  volumes_from:
+    - frontend
+  volumes:
+    - "./ssl:/app/ssl:rw"
+    - "./logs:/var/log/fm:rw"
+  env_file:
+    - "./app.env"
+
+rpc:
+  image: beget/sprutio-rpc
+  links:
+    - redis:fm-redis
+  volumes_from:
+    - cron
+  volumes:
+    - "/:/mnt:rw"
+    - "./var:/var/spool/fm:rw"
+    - "./logs:/var/log/fm:rw"
+  env_file:
+    - "./rpc.env"
+
+nginx:
+  image: beget/sprutio-nginx
+  links:
+    - app:fm-app
+  volumes_from:
+    - cron
+    - frontend
+  volumes:
+    - "./ssl:/app/ssl:ro"
+    - "./logs:/var/log/nginx:rw"
+  ports:
+    - "127.0.0.1:9080:80"
+    - "9443:443"
+
+frontend:
+  image: beget/sprutio-frontend
+
 cron:
-  image: beget/fmcore-cron
+  image: beget/sprutio-cron
   volumes:
     - "./downloads:/tmp/fm:rw"
 
-app:
-  image: beget/fmcore-app
-  links:
-    - redis:fmcore-redis
-    - rpc:fmcore-rpc
-  volumes:
-    - "./logs:/var/log/fm:rw"
-  environment:
-    - FM_APP_DEFAULT_RPC_HOST=fmcore-rpc
-    - FM_APP_DEFAULT_RPC_PORT=8400
-    - FM_APP_DEFAULT_PORT=8300
-    - FM_APP_DEFAULT_HOST=0.0.0.0
-    - FM_REDIS_HOST=fmcore-redis
-    - FM_REDIS_PORT=6379
-    - FM_REDIS_EXPIRE=86400
-    - FM_APP_LOGDIR=/var/log/fm
-    - FM_APP_SENDFILE_HOST=fmcore-rpc
-    - FM_APP_SENDFILE_PORT=51600
-
-rpc:
-  image: beget/fmcore-rpc
-  links:
-    - redis:fmcore-redis
-  volumes_from:
-    - cron
-  volumes:
-    - "./logs:/var/log/fm:rw"
-    - "./var:/var/spool/fm:rw"
-    - "/:/mnt:rw"
-  environment:
-    - FM_RPC_PROGRAM_NAME=fm-rpc
-    - FM_RPC_HOST=0.0.0.0
-    - FM_RPC_PORT=8400
-    - FM_REDIS_HOST=fmcore-redis
-    - FM_REDIS_PORT=6379
-    - FM_REDIS_EXPIRE=86400
-    - FM_RPC_SETTINGS_DB_PATH=/var/spool/fm/rpc.db
-    - FM_RPC_LOGFILE=/var/log/fm/rpc.log
-    - FM_RPC_ROOT_MOUNT_POINT=/mnt
-    - FM_RPC_SENDFILE_HOST=0.0.0.0
-    - FM_RPC_SENDFILE_PORT=51600
-
-nginx:
-  image: beget/fmcore-nginx
-  links:
-    - app:fmcore-app
-  volumes_from:
-    - cron
-    - app
-  ports:
-    - "9080:80"
-    - "9443:443"
-
 redis:
-  image: redis
+  image: redis:3.0
+
+# EOF
