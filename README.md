@@ -16,19 +16,19 @@
  
 After installing all prerequisites 
 
-1. Download the installer
+1) Download the installer
 
 ```*.sh
 user@host:~$ wget https://raw.githubusercontent.com/LTD-Beget/sprutio/master/run.sh
 ```
 
-2. Grant the apropriate permissions
+2) Grant the apropriate permissions
 
 ```*.sh
-chmod +x run.sh
+user@host:~$ chmod +x run.sh
 ```
 
-3. Run the script
+3) Run the script
 
 ```*.sh
 user@host:~$ ./run.sh
