@@ -8,7 +8,11 @@
  * Supports hotkeys
  * Able to view images
 
-
+### Demo
+ * https://demo.sprut.io:9443
+ * login:    demo
+ * password: demo
+ 
 ### Requirements
 
  * Docker [(install guide)](https://docs.docker.com/engine/installation/)
