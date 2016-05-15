@@ -57,6 +57,7 @@ class BaseAction(object):
 class Modules(object):
     HOME = "home"
     PUBLIC_FTP = "public_ftp"
+    PUBLIC_WEBDAV = "public_webdav"
 
 
 class Actions(object):
@@ -96,6 +97,10 @@ class Actions(object):
     FTP_UPDATE = 'actions.ftp.update.UpdateFtp'
     FTP_REMOVE = 'actions.ftp.remove.RemoveFtp'
 
+    WEBDAV_CREATE = 'actions.webdav.create.CreateWebDav'
+    WEBDAV_UPDATE = 'actions.webdav.update.UpdateWebDav'
+    WEBDAV_REMOVE = 'actions.webdav.remove.RemoveWebDav'
+
     CHECK_HTPASSWD = 'actions.htaccess.check_passwd.CheckPassword'
     SET_HTPASSWD = 'actions.htaccess.set_passwd.SetPassword'
     REMOVE_HTPASSWD = 'actions.htaccess.remove_passwd.RemovePassword'
@@ -110,6 +115,7 @@ class Actions(object):
 class Action(object):
     HOME = "FM.action.HomeFtp"
     REMOTE_FTP = "FM.action.RemoteFtp"
+    REMOTE_WEBDAV = "FM.action.RemoteWebDav"
     LOCAL = 'FM.action.Local'
     SITE_LIST = 'FM.action.SiteList'
 
