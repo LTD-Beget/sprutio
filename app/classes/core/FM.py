@@ -57,6 +57,7 @@ class BaseAction(object):
 class Modules(object):
     HOME = "home"
     PUBLIC_FTP = "public_ftp"
+    SFTP = "sftp"
 
 
 class Actions(object):
@@ -96,6 +97,10 @@ class Actions(object):
     FTP_UPDATE = 'actions.ftp.update.UpdateFtp'
     FTP_REMOVE = 'actions.ftp.remove.RemoveFtp'
 
+    SFTP_CREATE = 'actions.sftp.create.CreateSftp'
+    SFTP_UPDATE = 'actions.sftp.update.UpdateSftp'
+    SFTP_REMOVE = 'actions.sftp.remove.RemoveSftp'
+
     CHECK_HTPASSWD = 'actions.htaccess.check_passwd.CheckPassword'
     SET_HTPASSWD = 'actions.htaccess.set_passwd.SetPassword'
     REMOVE_HTPASSWD = 'actions.htaccess.remove_passwd.RemovePassword'
@@ -110,6 +115,7 @@ class Actions(object):
 class Action(object):
     HOME = "FM.action.HomeFtp"
     REMOTE_FTP = "FM.action.RemoteFtp"
+    SFTP = "FM.action.Sftp"
     LOCAL = 'FM.action.Local'
     SITE_LIST = 'FM.action.SiteList'
 
