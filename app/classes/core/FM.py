@@ -57,6 +57,7 @@ class BaseAction(object):
 class Modules(object):
     HOME = "home"
     PUBLIC_FTP = "public_ftp"
+    SFTP = "sftp"
     PUBLIC_WEBDAV = "public_webdav"
 
 
@@ -97,6 +98,10 @@ class Actions(object):
     FTP_UPDATE = 'actions.ftp.update.UpdateFtp'
     FTP_REMOVE = 'actions.ftp.remove.RemoveFtp'
 
+    SFTP_CREATE = 'actions.sftp.create.CreateSftp'
+    SFTP_UPDATE = 'actions.sftp.update.UpdateSftp'
+    SFTP_REMOVE = 'actions.sftp.remove.RemoveSftp'
+
     WEBDAV_CREATE = 'actions.webdav.create.CreateWebDav'
     WEBDAV_UPDATE = 'actions.webdav.update.UpdateWebDav'
     WEBDAV_REMOVE = 'actions.webdav.remove.RemoveWebDav'
@@ -115,6 +120,7 @@ class Actions(object):
 class Action(object):
     HOME = "FM.action.HomeFtp"
     REMOTE_FTP = "FM.action.RemoteFtp"
+    SFTP = "FM.action.Sftp"
     REMOTE_WEBDAV = "FM.action.RemoteWebDav"
     LOCAL = 'FM.action.Local'
     SITE_LIST = 'FM.action.SiteList'
