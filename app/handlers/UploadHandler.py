@@ -3,11 +3,12 @@ import json
 from tornado import web
 from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 import random
-from sendfile import sendfile
 import socket
 import time
 from core import FM
 from config.server import SENDFILE_DEFAULT_HOST, SENDFILE_DEFAULT_PORT
+
+SENDFILE_BUFFER_SIZE = 4096
 
 
 class UploadHandler(BaseHandler):
@@ -47,18 +48,20 @@ class UploadHandler(BaseHandler):
         fp.write(self.request.body)
         fp.close()
 
+        size = os.path.getsize(nginx_file).to_bytes(36, byteorder='big')
+
         file = open(nginx_file, "rb")
-        blocksize = os.path.getsize(nginx_file)
         sock = socket.socket()
         sock.connect((SENDFILE_DEFAULT_HOST, SENDFILE_DEFAULT_PORT))
-        offset = 0
+
+        # отправляем размер файла
+        sock.send(size)
 
         while True:
-            sent = sendfile(sock.fileno(), file.fileno(), offset, blocksize)
+            data = file.read(SENDFILE_BUFFER_SIZE)
+            sent = sock.send(data)
             if sent == 0:
-                file.close()
                 break  # EOF
-            offset += sent
 
         os.remove(nginx_file)
         action = self.get_action(name=FM.Actions.UPLOAD, module=session.get('type'), session=session,

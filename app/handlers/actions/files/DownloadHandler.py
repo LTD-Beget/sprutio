@@ -4,6 +4,7 @@ from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 from core import FM
 from email import utils
 import pprint
+import json
 
 
 class DownloadHandler(BaseHandler):
@@ -31,8 +32,12 @@ class DownloadHandler(BaseHandler):
             self.finish()
             return
 
-        # handle errors for some files during request
-        if 'errors' in results and results['errors']:
+        if 'errors' in results.keys():
+            errors = results["errors"]
+        else:
+            errors = ''
+
+        if len(errors) > 0:
             self.set_status(500)
 
             self.write('Error downloading the following files: <br/>')
