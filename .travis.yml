@@ -1,22 +1,26 @@
+branches:
+  only:
+    - master
+
 sudo: required  
 services:  
   - docker
 
 script:
-  - docker build -t beget/sprutio-python:$TRAVIS_BRANCH -f Dockerfile ./
-  - docker build -t beget/sprutio-cron:$TRAVIS_BRANCH -f Dockerfile.cron ./
-  - docker build -t beget/sprutio-bower:$TRAVIS_BRANCH -f Dockerfile.bower ./
-  - docker build -t beget/sprutio-rpc:$TRAVIS_BRANCH -f rpc/Dockerfile rpc/
-  - docker build -t beget/sprutio-app:$TRAVIS_BRANCH -f app/Dockerfile app/
-  - docker build -t beget/sprutio-nginx:$TRAVIS_BRANCH -f Dockerfile.nginx ./
-  - docker run -v $PWD/app/public:/app -w /app beget/sprutio-bower:$TRAVIS_BRANCH bower install --allow-root
-  - docker build -t beget/sprutio-frontend:$TRAVIS_BRANCH -f app/public/Dockerfile app/public/
+  - docker build -t beget/sprutio-python -f Dockerfile ./
+  - docker build -t beget/sprutio-cron -f Dockerfile.cron ./
+  - docker build -t beget/sprutio-bower -f Dockerfile.bower ./
+  - docker build -t beget/sprutio-rpc -f rpc/Dockerfile rpc/
+  - docker build -t beget/sprutio-app -f app/Dockerfile app/
+  - docker build -t beget/sprutio-nginx -f Dockerfile.nginx ./
+  - docker run -v $PWD/app/public:/app -w /app beget/sprutio-bower bower install --allow-root
+  - docker build -t beget/sprutio-frontend -f app/public/Dockerfile app/public/
 
 after_success:
   - docker login --email=$DOCKER_HUB_EMAIL --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD
-  - docker push beget/sprutio-cron:$TRAVIS_BRANCH
-  - docker push beget/sprutio-rpc:$TRAVIS_BRANCH
-  - docker push beget/sprutio-app:$TRAVIS_BRANCH
-  - docker push beget/sprutio-nginx:$TRAVIS_BRANCH
-  - docker push beget/sprutio-frontend:$TRAVIS_BRANCH
+  - docker push beget/sprutio-cron
+  - docker push beget/sprutio-rpc
+  - docker push beget/sprutio-app
+  - docker push beget/sprutio-nginx
+  - docker push beget/sprutio-frontend
 
