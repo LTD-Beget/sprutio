@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LTD-Beget/sprutio.svg?branch=master)](https://travis-ci.org/LTD-Beget/sprutio)
+
 ## Sprut.io Open Source File Manager
 
 ### Project web site:
