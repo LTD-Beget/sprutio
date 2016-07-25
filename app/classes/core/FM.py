@@ -56,9 +56,9 @@ class BaseAction(object):
 
 class Modules(object):
     HOME = "home"
-    PUBLIC_FTP = "public_ftp"
+    FTP = "ftp"
     SFTP = "sftp"
-    PUBLIC_WEBDAV = "public_webdav"
+    WEBDAV = "webdav"
 
 
 class Actions(object):

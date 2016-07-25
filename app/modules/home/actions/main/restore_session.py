@@ -17,10 +17,13 @@ class RestoreSession(FM.BaseAction):
             same_type = (session['Right']['type'] == session['Left']['type'])
 
             if same_type and same_path:
+                if session['Left']['type'] == FM.Modules.WEBDAV:
+                    if session['Left']['server_id'] == session['Left']['server_id']:
+                        same = True
                 if session['Left']['type'] == FM.Modules.SFTP:
                     if session['Left']['server_id'] == session['Left']['server_id']:
                         same = True
-                if session['Left']['type'] == FM.Modules.PUBLIC_FTP:
+                if session['Left']['type'] == FM.Modules.FTP:
                     if session['Left']['server_id'] == session['Left']['server_id']:
                         same = True
                 if session['Left']['type'] == FM.Modules.HOME:
