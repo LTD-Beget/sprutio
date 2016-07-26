@@ -12,7 +12,7 @@ class ChmodFiles(FM.BaseAction):
         request = self.get_rpc_request()
 
         operation = FMOperation.create(FM.Action.CHMOD, FMOperation.STATUS_WAIT)
-        result = request.request('local/chmod_files', login=self.request.get_current_user(),
+        result = request.request('home/chmod_files', login=self.request.get_current_user(),
                                  password=self.request.get_current_password(), status_id=operation.id,
                                  params=self.params)
 

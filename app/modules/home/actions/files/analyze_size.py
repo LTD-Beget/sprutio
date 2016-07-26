@@ -12,7 +12,7 @@ class AnalyzeSize(FM.BaseAction):
         request = self.get_rpc_request()
 
         operation = FMOperation.create(FM.Action.ANALYZE_SIZE, FMOperation.STATUS_WAIT)
-        result = request.request('local/analyze_size', login=self.request.get_current_user(),
+        result = request.request('home/analyze_size', login=self.request.get_current_user(),
                                  password=self.request.get_current_password(), status_id=operation.id, path=self.path)
         answer = self.process_result(result)
         answer["data"] = operation.as_dict()
