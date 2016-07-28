@@ -6,7 +6,7 @@ import json
 import traceback
 import logging
 from core import FM
-from config.settings import DEFAULT_LOCALE, DEFAULT_LANGUAGE
+from config.settings import DEFAULT_LOCALE, DEFAULT_LANGUAGE, DEFAULT_COOKIE_TOKEN_NAME
 from config import server
 
 
@@ -93,7 +93,7 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_current_language(self):
 
         redis = self.redis.get(threading.currentThread())
-        secure_cookie = self.get_secure_cookie("authhash")
+        secure_cookie = self.get_secure_cookie(DEFAULT_COOKIE_TOKEN_NAME)
 
         if secure_cookie is None:
             return DEFAULT_LANGUAGE
