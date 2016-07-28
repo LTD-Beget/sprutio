@@ -3,7 +3,7 @@ import os
 TYPE_FCGI = 'fcgi'
 TYPE_MSGPACK = 'msgpack'
 
-DEFAULT_RPC_HOST = os.getenv("FM_APP_DEFAULT_RPC_HOST", '127.0.0.1')
+DEFAULT_RPC_HOST = os.getenv("FM_APP_DEFAULT_RPC_HOST", 'fm-rpc')
 DEFAULT_RPC_PORT = os.getenv("FM_APP_DEFAULT_RPC_PORT", 8400)
 
 # todo: сделать доступ как через ['это'], так и черезе точку.

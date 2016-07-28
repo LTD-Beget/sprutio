@@ -7,14 +7,14 @@ class Logout(FM.BaseAction):
 
     def run(self):
 
-        auth_key = self.request.get_secure_cookie('authhash')
+        auth_key = self.request.get_secure_cookie('authkey')
         redis = self.redis.get_current()
 
         redis_key = 'FM::session_state::' + self.request.get_current_user()
         redis.delete(redis_key)
         redis.delete(auth_key)
 
-        self.request.clear_cookie("authhash")
+        self.request.clear_cookie("authkey")
         self.request.clear_cookie("locale")
 
         answer = {
