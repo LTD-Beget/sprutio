@@ -22,4 +22,4 @@ class MainHandler(BaseHandler):
         if self.application.options.debug:
             self.render("app.debug.html", language=self.get_current_language())
         else:
-            self.render("app.debug.html", language=self.get_current_language())
+            self.render("app.html", language=self.get_current_language())
