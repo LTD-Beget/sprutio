@@ -1,6 +1,7 @@
 import json
 import threading
 import traceback
+from config.settings import DEFAULT_COOKIE_TOKEN_NAME
 from config.server import COOKIE_EXPIRE
 from helpers import random_hash
 from classes.core import FM
@@ -25,7 +26,7 @@ class FMAuth:
                     "password": password
                 }
                 redis.set(token, json.dumps(params))
-                request.set_secure_cookie('token', token, COOKIE_EXPIRE)
+                request.set_secure_cookie(DEFAULT_COOKIE_TOKEN_NAME, token, COOKIE_EXPIRE)
                 return token
             except Exception as e:
                 request.application.logger.error(
@@ -44,7 +45,7 @@ class FMAuth:
                 params = json.loads(str(params))
                 redis.set(token, json.dumps(params))
 
-                request.set_secure_cookie('token', token, COOKIE_EXPIRE)
+                request.set_secure_cookie(DEFAULT_COOKIE_TOKEN_NAME, token, COOKIE_EXPIRE)
                 return token
             except Exception as e:
                 request.application.logger.error(
@@ -56,7 +57,7 @@ class FMAuth:
     @staticmethod
     def logout(request):
         try:
-            token = request.get_secure_cookie('token')
+            token = request.get_secure_cookie(DEFAULT_COOKIE_TOKEN_NAME)
             redis = request.redis.get(threading.currentThread())
             """:type : connectors.RedisConnector.RedisConnector"""
 
