@@ -21,14 +21,18 @@ class DownloadHandler(BaseHandler):
                                  mode=mode)
         results = action.run()
 
-        if "error" in results:
+        if "error" in results and results['error']:
             self.set_status(500)
             self.application.logger.error('Error download file. %s' % pprint.pformat(results))
             self.write('Error download file.' + str(results.get("message")))
             self.finish()
             return
 
-        errors = results["errors"]
+        if 'errors' in results.keys():
+            errors = results["errors"]
+        else:
+            errors = ''
+        results = results['data']
 
         if len(errors) > 0:
             self.set_status(500)

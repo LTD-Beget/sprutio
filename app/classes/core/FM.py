@@ -8,8 +8,8 @@ class BaseAction(object):
         return self.application.redis
 
     @staticmethod
-    def get_rpc_request():
-        factory = beget_msgpack.RequestFactory(rpc)
+    def get_rpc_request(user=None, password=None, logger=None):
+        factory = beget_msgpack.RequestFactory(rpc, user=user, password=password, logger=logger)
         request = factory.get_request('default')
         return request
 
@@ -56,7 +56,7 @@ class BaseAction(object):
 
 class Modules(object):
     HOME = "home"
-    PUBLIC_FTP = "public_ftp"
+    FTP = "ftp"
     SFTP = "sftp"
 
 

@@ -12,7 +12,7 @@ class CreateCopy(FM.BaseAction):
         request = self.get_rpc_request()
 
         operation = FMOperation.create(FM.Action.MOVE, FMOperation.STATUS_WAIT)
-        result = request.request('local/create_copy', login=self.request.get_current_user(),
+        result = request.request('home/create_copy', login=self.request.get_current_user(),
                                  password=self.request.get_current_password(), status_id=operation.id, paths=self.paths)
         answer = self.process_result(result)
         answer["data"] = operation.as_dict()

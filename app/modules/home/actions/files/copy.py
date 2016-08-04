@@ -16,7 +16,7 @@ class CopyFiles(FM.BaseAction):
 
         operation = FMOperation.create(FM.Action.COPY, FMOperation.STATUS_WAIT)
 
-        result = request.request('local/copy_files', login=self.request.get_current_user(),
+        result = request.request('home/copy_files', login=self.request.get_current_user(),
                                  password=self.request.get_current_password(), status_id=operation.id,
                                  source=self.session, target=self.target, paths=self.paths, overwrite=self.overwrite)
 

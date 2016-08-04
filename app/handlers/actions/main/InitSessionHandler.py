@@ -15,7 +15,6 @@ class InitSessionHandler(BaseHandler):
             'host': self.get_current_host(),
             'path': None
         })
-
         action = self.get_action(name=FM.Actions.INIT_SESSION, module=session['type'],
                                  path=session['path'], session=session)
         answer = action.run()
