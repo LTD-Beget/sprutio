@@ -151,7 +151,6 @@ class BaseHandler(tornado.web.RequestHandler):
         return '/home/' + login[0] + '/' + login
 
     def get_current_host(self):
-
         redis = self.redis.get(threading.currentThread())
         secure_cookie = self.get_secure_cookie("token")
 
