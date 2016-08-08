@@ -37,6 +37,10 @@ from handlers.actions.sftp import SftpCreateConnectionHandler
 from handlers.actions.sftp import SftpUpdateConnectionHandler
 from handlers.actions.sftp import SftpRemoveConnectionHandler
 
+from handlers.actions.webdav import WebDavCreateConnectionHandler
+from handlers.actions.webdav import WebDavUpdateConnectionHandler
+from handlers.actions.webdav import WebDavRemoveConnectionHandler
+
 from handlers import MainHandler
 from handlers import UploadHandler
 from handlers import AuthHandler
@@ -83,5 +87,8 @@ HANDLERS = [
     (r"/actions/ftp/remove", FtpRemoveConnectionHandler.FtpRemoveConnectionHandler),
     (r"/actions/sftp/create", SftpCreateConnectionHandler.SftpCreateConnectionHandler),
     (r"/actions/sftp/update", SftpUpdateConnectionHandler.SftpUpdateConnectionHandler),
-    (r"/actions/sftp/remove", SftpRemoveConnectionHandler.SftpRemoveConnectionHandler)
+    (r"/actions/sftp/remove", SftpRemoveConnectionHandler.SftpRemoveConnectionHandler),
+    (r"/actions/webdav/create", WebDavCreateConnectionHandler.WebDavCreateConnectionHandler),
+    (r"/actions/webdav/update", WebDavUpdateConnectionHandler.WebDavUpdateConnectionHandler),
+    (r"/actions/webdav/remove", WebDavRemoveConnectionHandler.WebDavRemoveConnectionHandler)
 ]
