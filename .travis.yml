@@ -1,0 +1,26 @@
+branches:
+  only:
+    - master
+
+sudo: required  
+services:  
+  - docker
+
+script:
+  - docker build -t beget/sprutio-python -f Dockerfile ./
+  - docker build -t beget/sprutio-cron -f Dockerfile.cron ./
+  - docker build -t beget/sprutio-bower -f Dockerfile.bower ./
+  - docker build -t beget/sprutio-rpc -f rpc/Dockerfile rpc/
+  - docker build -t beget/sprutio-app -f app/Dockerfile app/
+  - docker build -t beget/sprutio-nginx -f Dockerfile.nginx ./
+  - docker run -v $PWD/app/public:/app -w /app beget/sprutio-bower bower install --allow-root
+  - docker build -t beget/sprutio-frontend -f app/public/Dockerfile app/public/
+
+after_success:
+  - docker login --email=$DOCKER_HUB_EMAIL --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD
+  - docker push beget/sprutio-cron
+  - docker push beget/sprutio-rpc
+  - docker push beget/sprutio-app
+  - docker push beget/sprutio-nginx
+  - docker push beget/sprutio-frontend
+

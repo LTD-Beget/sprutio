@@ -1,4 +1,9 @@
+[![Build Status](https://travis-ci.org/LTD-Beget/sprutio.svg?branch=master)](https://travis-ci.org/LTD-Beget/sprutio)
+
 ## Sprut.io Open Source File Manager
+
+### Project web site:
+ * https://sprut.io/en
 
 ### Top features:
 
@@ -54,8 +59,6 @@ d6d539b09e5a   beget/sprutio-rpc      "/init"                    sprutio_rpc_1
 ```
 
 
-##
-
 Sprut.io will now be available over https on the following IP-address:
 
 ```*.sh
@@ -65,6 +68,10 @@ user@host:~$ https://YOUR_SERVER_IP:9443
 To log in, please use any of your system's credentials
 
 The file manager will use the default self-signed SSL certificate, to use any other, drop it in the "ssl" folder
+
+### Screenshot 
+
+![Main screen image](promo/slider_ui.png)
 
 We wish you great achievements with our product.
 

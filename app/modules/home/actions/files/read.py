@@ -11,7 +11,7 @@ class ReadFile(FM.BaseAction):
     def run(self):
         request = self.get_rpc_request()
 
-        result = request.request_bytes('local/read_file', login=self.request.get_current_user(),
+        result = request.request_bytes('home/read_file', login=self.request.get_current_user(),
                                        password=self.request.get_current_password(), path=self.path)
         answer = self.process_result(result)
 

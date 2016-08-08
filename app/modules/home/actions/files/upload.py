@@ -13,7 +13,7 @@ class UploadFile(FM.BaseAction):
     def run(self):
         request = self.get_rpc_request()
         request.set_timeout(IDLE_CONNECTION_TIMEOUT)
-        result = request.request('local/upload_file', login=self.request.get_current_user(),
+        result = request.request('home/upload_file', login=self.request.get_current_user(),
                                  password=self.request.get_current_password(), path=self.path, file_path=self.file_path,
                                  overwrite=self.overwrite)
         answer = self.process_result(result)

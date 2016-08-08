@@ -8,8 +8,8 @@ class BaseAction(object):
         return self.application.redis
 
     @staticmethod
-    def get_rpc_request():
-        factory = beget_msgpack.RequestFactory(rpc)
+    def get_rpc_request(user=None, password=None, logger=None):
+        factory = beget_msgpack.RequestFactory(rpc, user=user, password=password, logger=logger)
         request = factory.get_request('default')
         return request
 
@@ -56,7 +56,9 @@ class BaseAction(object):
 
 class Modules(object):
     HOME = "home"
-    PUBLIC_FTP = "public_ftp"
+    FTP = "ftp"
+    SFTP = "sftp"
+    WEBDAV = "webdav"
 
 
 class Actions(object):
@@ -96,6 +98,14 @@ class Actions(object):
     FTP_UPDATE = 'actions.ftp.update.UpdateFtp'
     FTP_REMOVE = 'actions.ftp.remove.RemoveFtp'
 
+    SFTP_CREATE = 'actions.sftp.create.CreateSftp'
+    SFTP_UPDATE = 'actions.sftp.update.UpdateSftp'
+    SFTP_REMOVE = 'actions.sftp.remove.RemoveSftp'
+
+    WEBDAV_CREATE = 'actions.webdav.create.CreateWebDav'
+    WEBDAV_UPDATE = 'actions.webdav.update.UpdateWebDav'
+    WEBDAV_REMOVE = 'actions.webdav.remove.RemoveWebDav'
+
     CHECK_HTPASSWD = 'actions.htaccess.check_passwd.CheckPassword'
     SET_HTPASSWD = 'actions.htaccess.set_passwd.SetPassword'
     REMOVE_HTPASSWD = 'actions.htaccess.remove_passwd.RemovePassword'
@@ -110,6 +120,8 @@ class Actions(object):
 class Action(object):
     HOME = "FM.action.HomeFtp"
     REMOTE_FTP = "FM.action.RemoteFtp"
+    SFTP = "FM.action.Sftp"
+    REMOTE_WEBDAV = "FM.action.RemoteWebDav"
     LOCAL = 'FM.action.Local'
     SITE_LIST = 'FM.action.SiteList'
 

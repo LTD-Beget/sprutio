@@ -11,7 +11,7 @@ class RenameFile(FM.BaseAction):
     def run(self):
         request = self.get_rpc_request()
 
-        result = request.request('local/rename_file', login=self.request.get_current_user(),
+        result = request.request('home/rename_file', login=self.request.get_current_user(),
                                  password=self.request.get_current_password(), source_path=self.source_path,
                                  target_path=self.target_path)
         answer = self.process_result(result)

@@ -14,7 +14,7 @@ class AuthHandler(BaseHandler):
     @wrap_catch
     def get(self):
         try:
-            token = self.get_argument("token", None)
+            token = self.get_argument("authkey", None)
             language = self.get_argument("language", settings.DEFAULT_LANGUAGE)
 
             if language not in settings.LANGUAGES:
@@ -27,7 +27,8 @@ class AuthHandler(BaseHandler):
                     self.redirect('/')
                 else:
                     raise Exception("Session key is not exist")
-            raise Exception("Session key is not provided")
+            else:
+                raise Exception("Session key is not provided")
 
         except Exception as e:
             self.application.logger.error('In AuthHandler Exception: ' + str(e))
@@ -37,7 +38,7 @@ class AuthHandler(BaseHandler):
     @wrap_catch
     def post(self):
         try:
-            token = self.get_argument("token", None)
+            token = self.get_argument("authkey", None)
             language = self.get_argument("language", settings.DEFAULT_LANGUAGE)
 
             login = self.get_argument("login", None)

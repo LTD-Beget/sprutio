@@ -33,6 +33,14 @@ from handlers.actions.ftp import FtpCreateConnectionHandler
 from handlers.actions.ftp import FtpUpdateConnectionHandler
 from handlers.actions.ftp import FtpRemoveConnectionHandler
 
+from handlers.actions.sftp import SftpCreateConnectionHandler
+from handlers.actions.sftp import SftpUpdateConnectionHandler
+from handlers.actions.sftp import SftpRemoveConnectionHandler
+
+from handlers.actions.webdav import WebDavCreateConnectionHandler
+from handlers.actions.webdav import WebDavUpdateConnectionHandler
+from handlers.actions.webdav import WebDavRemoveConnectionHandler
+
 from handlers import MainHandler
 from handlers import UploadHandler
 from handlers import AuthHandler
@@ -76,5 +84,11 @@ HANDLERS = [
     (r"/actions/archive/extract", ArchiveExtractHandler.ArchiveExtractHandler),
     (r"/actions/ftp/create", FtpCreateConnectionHandler.FtpCreateConnectionHandler),
     (r"/actions/ftp/update", FtpUpdateConnectionHandler.FtpUpdateConnectionHandler),
-    (r"/actions/ftp/remove", FtpRemoveConnectionHandler.FtpRemoveConnectionHandler)
+    (r"/actions/ftp/remove", FtpRemoveConnectionHandler.FtpRemoveConnectionHandler),
+    (r"/actions/sftp/create", SftpCreateConnectionHandler.SftpCreateConnectionHandler),
+    (r"/actions/sftp/update", SftpUpdateConnectionHandler.SftpUpdateConnectionHandler),
+    (r"/actions/sftp/remove", SftpRemoveConnectionHandler.SftpRemoveConnectionHandler),
+    (r"/actions/webdav/create", WebDavCreateConnectionHandler.WebDavCreateConnectionHandler),
+    (r"/actions/webdav/update", WebDavUpdateConnectionHandler.WebDavUpdateConnectionHandler),
+    (r"/actions/webdav/remove", WebDavRemoveConnectionHandler.WebDavRemoveConnectionHandler)
 ]

@@ -10,7 +10,6 @@ class RemoveFilesHandler(BaseHandler):
     @wrap_catch
     @web.authenticated
     def post(self):
-
         paths = self.get_post('paths')
         session = self.get_post('session')
 

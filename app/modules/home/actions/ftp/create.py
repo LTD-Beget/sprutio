@@ -11,7 +11,9 @@ class CreateFtp(FM.BaseAction):
         request = self.get_rpc_request()
 
         result = request.request('ftp/create_connection', login=self.request.get_current_user(),
-                                 password=self.request.get_current_password(), host=self.params.get('host'),
+                                 password=self.request.get_current_password(),
+                                 host=self.params.get('host'),
+                                 port=self.params.get('port'),
                                  ftp_user=self.params.get('user'),
                                  ftp_password=self.params.get('password'))
 

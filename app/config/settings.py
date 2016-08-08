@@ -11,6 +11,7 @@ app_modules = [
 
 sys.path = app_modules + sys.path
 
+DEFAULT_COOKIE_TOKEN_NAME = 'token'
 DEFAULT_LANGUAGE = 'ru'
 DEFAULT_LOCALE = 'ru_RU'
 DEFAULT_DATABASE = 'fm.db'
