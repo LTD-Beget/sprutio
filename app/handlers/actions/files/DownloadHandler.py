@@ -21,41 +21,40 @@ class DownloadHandler(BaseHandler):
                                  mode=mode)
         results = action.run()
 
-        if "error" in results and results['error']:
+        # handle global error during RPC request
+        if 'error' in results and results['error']:
+            self.application.logger.error('Error downloading file: {}'.format(pprint.pformat(results)))
             self.set_status(500)
-            self.application.logger.error('Error download file. %s' % pprint.pformat(results))
-            self.write('Error download file.' + str(results.get("message")))
+
+            self.write('Error downloading file: {}'.format(results.get('message')))
+
             self.finish()
             return
 
-        if 'errors' in results.keys():
-            errors = results["errors"]
-        else:
-            errors = ''
-        results = results['data']
-
-        if len(errors) > 0:
+        # handle errors for some files during request
+        if 'errors' in results and results['errors']:
             self.set_status(500)
 
-            self.write('Error download file.: <br/>')
-
-            for f in errors:
+            self.write('Error downloading the following files: <br/>')
+            for f in results['errors']:
                 self.write(f + '<br/>')
+
             self.finish()
             return
-        else:
-            download_path = results["download_path"]
-            filename = results["file_name"]
 
-            mtime = results["mtime"]
-            inode = results["inode"]
-            size = results["size"]
+        download_path = results["download_path"]
+        filename = results["file_name"]
 
-            self.set_header("X-Accel-Redirect", download_path)
-            self.set_header("Content-Type", "application/octet-stream")
-            self.set_header("Last-Modified", utils.formatdate(mtime))
-            self.set_header("ETag", "%x-%x-%x" % (inode, size, mtime))
-            self.set_header("Connection", "close")
-            self.set_header("Content-Disposition", "attachment; filename=\"%s\"" % filename)
-            self.write('')
-            self.finish()
+        mtime = results["mtime"]
+        inode = results["inode"]
+        size = results["size"]
+
+        self.set_header("X-Accel-Redirect", download_path)
+        self.set_header("Content-Type", "application/octet-stream")
+        self.set_header("Last-Modified", utils.formatdate(mtime))
+        self.set_header("ETag", "%x-%x-%x" % (inode, size, mtime))
+        self.set_header("Connection", "close")
+        self.set_header("Content-Disposition", "attachment; filename=\"%s\"" % filename)
+
+        self.write('')
+        self.finish()
