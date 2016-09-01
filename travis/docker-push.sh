@@ -3,13 +3,13 @@ set -e
 
 # ignore pull requests
 if [ "$TRAVIS_PULL_REQUEST" != "false"  ]; then
-    echo "Ignoring push for pull requests"
+    echo "Skipping push for pull requests"
     exit 0
 fi
 
 # ignore non-master branches
 if [ "$TRAVIS_BRANCH" != "master" ]; then
-    echo "Ignoring non-master branches"
+    echo "Skipping push for non-master branches"
     exit 0
 fi
 
