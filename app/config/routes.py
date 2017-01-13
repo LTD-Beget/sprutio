@@ -5,7 +5,6 @@ from handlers.actions.main import CheckStatusHandler
 from handlers.actions.main import CancelOperationHandler
 from handlers.actions.main import LoadSettingsHandler
 from handlers.actions.main import SaveSettingsHandler
-# from handlers.actions.main import LogoutHandler
 from handlers.actions.files import ListFilesHandler
 from handlers.actions.files import RemoveFilesHandler
 from handlers.actions.files import ChmodFilesHandler

@@ -13,6 +13,7 @@ class ReadFileHandler(BaseHandler):
 
         path = self.get_post('path')
         session = self.get_post('session')
+        encoding = self.get_post('encoding')
 
         if path is None:
             self.json({
@@ -30,7 +31,11 @@ class ReadFileHandler(BaseHandler):
             self.finish()
             return
 
-        action = self.get_action(name=FM.Actions.READ_FILE, module=session.get('type'), path=path, session=session)
+        action = self.get_action(name=FM.Actions.READ_FILE,
+                                 module=session.get('type'),
+                                 path=path,
+                                 encoding=encoding,
+                                 session=session)
         answer = action.run()
 
         self.json(answer)

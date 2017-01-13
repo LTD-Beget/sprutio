@@ -3,18 +3,19 @@ import traceback
 
 
 class ReadFile(FM.BaseAction):
-    def __init__(self, request, path, session, **kwargs):
+    def __init__(self, request, path, encoding, session, **kwargs):
         super(ReadFile, self).__init__(request=request, **kwargs)
 
         self.path = path
         self.session = session
+        self.encoding = encoding
 
     def run(self):
         request = self.get_rpc_request()
 
         result = request.request_bytes('sftp/read_file', login=self.request.get_current_user(),
                                        password=self.request.get_current_password(), path=self.path,
-                                       session=self.session)
+                                       session=self.session, encoding=self.encoding)
         answer = self.process_result(result)
 
         if 'data' in answer.keys():
