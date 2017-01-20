@@ -1,5 +1,6 @@
-from core import FM
 import traceback
+
+from core import FM
 
 
 class ReadFile(FM.BaseAction):

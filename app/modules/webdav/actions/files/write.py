@@ -1,5 +1,4 @@
 from core import FM
-from core.FMOperation import FMOperation
 
 
 class WriteFile(FM.BaseAction):

@@ -1,5 +1,5 @@
-from core import FM
 from config.server import IDLE_CONNECTION_TIMEOUT
+from core import FM
 
 
 class DownloadFiles(FM.BaseAction):

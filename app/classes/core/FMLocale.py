@@ -1,7 +1,9 @@
-from tornado import locale
-from config.settings import LOCALES, DEFAULT_LANGUAGE, DEFAULT_LOCALE
-import threading
 import json
+import threading
+
+from tornado import locale
+
+from config.settings import LOCALES, DEFAULT_LANGUAGE, DEFAULT_LOCALE
 
 
 class FMLocale:

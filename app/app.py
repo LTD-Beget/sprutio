@@ -1,14 +1,10 @@
-import tornado.web
-import tornado.ioloop
-import tornado.locale
-import tornado.log
-import tornado.httpserver
 import logging
-# First import!
-from config import settings
 
-from config import server, routes, console
+import tornado.httpserver
+
 from classes.bootstrap import Bootstrap
+from config import server, routes, console
+from config import settings
 
 options = console.parse_options()
 

@@ -1,8 +1,9 @@
-from classes.connectors.RedisConnector import RedisConnector
-from datetime import datetime
+import json
 import random
 import time
-import json
+from datetime import datetime
+
+from classes.connectors.RedisConnector import RedisConnector
 
 
 class FMOperation(object):

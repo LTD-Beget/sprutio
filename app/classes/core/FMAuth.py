@@ -1,10 +1,11 @@
 import json
 import threading
 import traceback
-from config.settings import DEFAULT_COOKIE_TOKEN_NAME
-from config.server import COOKIE_EXPIRE
-from helpers import random_hash
+
 from classes.core import FM
+from config.server import COOKIE_EXPIRE
+from config.settings import DEFAULT_COOKIE_TOKEN_NAME
+from helpers import random_hash
 
 
 class FMAuth:

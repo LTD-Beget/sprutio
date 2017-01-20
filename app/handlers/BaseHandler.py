@@ -1,13 +1,15 @@
+import json
+import logging
 import threading
-import tornado.web
+import traceback
+
 import tornado.escape
 import tornado.locale
-import json
-import traceback
-import logging
-from core import FM
-from config.settings import DEFAULT_LOCALE, DEFAULT_LANGUAGE, DEFAULT_COOKIE_TOKEN_NAME
+import tornado.web
+
 from config import server
+from config.settings import DEFAULT_LOCALE, DEFAULT_LANGUAGE, DEFAULT_COOKIE_TOKEN_NAME
+from core import FM
 
 
 class BaseHandler(tornado.web.RequestHandler):

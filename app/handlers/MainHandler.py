@@ -1,7 +1,8 @@
-from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
+from tornado import web
+
 from classes.core.FMLocale import FMLocale
 from config import settings
-from tornado import web
+from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 
 
 class MainHandler(BaseHandler):

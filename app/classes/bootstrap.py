@@ -1,8 +1,9 @@
+from tornado import locale
+
+from config import rpc
+from config.settings import TRANSLATIONS_PATH
 from connectors.LoggerConnector import LoggerConnector
 from pools.RedisPool import RedisPool
-from tornado import locale
-from config.settings import TRANSLATIONS_PATH
-from config import rpc
 
 
 class Bootstrap:

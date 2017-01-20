@@ -1,7 +1,7 @@
 from tornado import web
-from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 
 from core import FM
+from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 
 
 class RemoveFilesHandler(BaseHandler):

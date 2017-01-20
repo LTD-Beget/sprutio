@@ -1,8 +1,9 @@
-import tornado.web
 import tornado.escape
 import tornado.locale
-from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
+import tornado.web
+
 from classes.core.FMAuth import FMAuth
+from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 
 
 class LogoutHandler(BaseHandler):

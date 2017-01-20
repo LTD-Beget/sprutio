@@ -1,6 +1,6 @@
-from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 from classes.core.FMLocale import FMLocale
 from config import settings
+from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 
 
 class LoginHandler(BaseHandler):

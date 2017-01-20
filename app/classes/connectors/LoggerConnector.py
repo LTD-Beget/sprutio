@@ -1,6 +1,6 @@
 import logging
-import traceback
 import os
+import traceback
 
 
 class LoggerConnector:

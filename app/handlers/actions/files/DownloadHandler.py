@@ -1,10 +1,11 @@
 import json
-from tornado import web
-from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
-from core import FM
-from email import utils
 import pprint
-import json
+from email import utils
+
+from tornado import web
+
+from core import FM
+from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 
 
 class DownloadHandler(BaseHandler):

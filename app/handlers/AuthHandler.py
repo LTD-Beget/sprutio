@@ -1,11 +1,11 @@
-from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
-from classes.core.FMLocale import FMLocale
-from classes.core.FMAuth import FMAuth
-from config import settings
-
-import tornado.web
 import tornado.escape
 import tornado.locale
+import tornado.web
+
+from classes.core.FMAuth import FMAuth
+from classes.core.FMLocale import FMLocale
+from config import settings
+from handlers.BaseHandler import BaseHandler, wrap_async_rpc, wrap_catch
 
 
 class AuthHandler(BaseHandler):

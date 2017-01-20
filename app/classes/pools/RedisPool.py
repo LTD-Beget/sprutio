@@ -1,5 +1,6 @@
-from connectors.RedisConnector import RedisConnector
 import threading
+
+from connectors.RedisConnector import RedisConnector
 
 
 class RedisPool:
