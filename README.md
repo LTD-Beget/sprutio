@@ -14,9 +14,7 @@
  * Able to view images
 
 ### Demo
- * https://demo.sprut.io:9443
- * login:    demo
- * password: demo
+ * https://demo.sprut.io:9443 
  
 ### Requirements
 
