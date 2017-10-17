@@ -15,8 +15,8 @@
 
 ### Демо
  * https://demo.sprut.io:9443
- * login:    demo
- * password: demo
+ (Нажмите на кнопку "Get Demo Account" для получения досутпа)
+ 
  
 ### Требования
  * Docker [(install guide)](https://docs.docker.com/engine/installation/)
