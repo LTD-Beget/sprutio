@@ -51,28 +51,40 @@ class AuthHandler(BaseHandler):
                 session_token = FMAuth.authenticate_by_token(self, token)
                 if session_token:
                     FMLocale.set_language(self, language, session_token)
-                    self.json({
-                        'error': False,
-                        'url': '/'
-                    })
+                    if self.is_ajax():
+                        self.json({
+                            'error': False,
+                            'url': '/'
+                        })
+                    else:
+                        self.redirect('/')
                 else:
-                    self.json({
-                        'error': True,
-                        'message': self.get_user_locale().translate("Incorrect security token")
-                    })
+                    if self.is_ajax():
+                        self.json({
+                            'error': True,
+                            'message': self.get_user_locale().translate("Incorrect security token")
+                        })
+                    else:
+                        self.redirect('/')
             else:
                 session_token = FMAuth.authenticate_by_pam(self, login, password)
                 if session_token:
                     FMLocale.set_language(self, language, session_token)
-                    self.json({
-                        'error': False,
-                        'url': '/'
-                    })
+                    if self.is_ajax():
+                        self.json({
+                            'error': False,
+                            'url': '/'
+                        })
+                    else:
+                        self.redirect('/')
                 else:
-                    self.json({
-                        'error': True,
-                        'message': self.get_user_locale().translate("Incorrect login or password")
-                    })
+                    if self.is_ajax():
+                        self.json({
+                            'error': True,
+                            'message': self.get_user_locale().translate("Incorrect login or password")
+                        })
+                    else:
+                        self.redirect('/')
 
             self.finish()
 

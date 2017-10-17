@@ -197,6 +197,12 @@ class BaseHandler(tornado.web.RequestHandler):
         except:
             return tornado.locale.get(DEFAULT_LOCALE)
 
+    def is_ajax(self):
+        if 'X-Requested-With' in self.request.headers:
+            if self.request.headers['X-Requested-With'] == 'XMLHttpRequest':
+                return True
+        return False
+
 
 def wrap_catch(method):
     def catch(*args, **kwargs):
